@@ -36,12 +36,12 @@ public class CardServiceImpl implements CardService {
 		scenes = new Scene[6];
 		for(int i = 0; i < 6; i++)
     		scenes[i] = new Scene();
-        scenes[0].type = "Í¨»°"; scenes[0].description = "ÎÊºò¿Í»§£¬Ë­ÖªÆäÈç´ËÄÑ²ø  Í¨»°90·ÖÖÓ\n";scenes[0].data = 90;
-        scenes[1].type = "¶ÌĞÅ"; scenes[1].description = "Í¨ÖªÅóÓÑÊÖ»ú»»ºÅ£¬·¢ËÍ¶ÌĞÅ50Ìõ\n";scenes[1].data = 50;
-        scenes[2].type = "¶ÌĞÅ"; scenes[2].description = "²ÎÓë»·¾³±£»¤ÊµÊ©·½°¸ÎÊ¾íµ÷²é ·¢ËÍ¶ÌĞÅ5Ìõ\n";scenes[2].data = 5;
-        scenes[3].type = "Í¨»°"; scenes[3].description = "¸ø¼Ò³¤´òµç»°£¬Í¨»°50·ÖÖÓ\n";scenes[3].data = 50;
-        scenes[4].type = "ÉÏÍø"; scenes[4].description = "¿´Ò»²¿µçÓ°£¬Á÷Á¿ÏûºÄ1GB\n";scenes[4].data = 1024;
-        scenes[5].type = "ÉÏÍø"; scenes[5].description = "ÍíÉÏ¿´ÓÎÏ·Ö±²¥£¬Á÷Á¿ÏûºÄ3GB\n";scenes[5].data = 3 * 1024;
+        scenes[0].type = "é€šè¯"; scenes[0].description = "é—®å€™å®¢æˆ·ï¼Œè°çŸ¥å…¶å¦‚æ­¤éš¾ç¼   é€šè¯90åˆ†é’Ÿ\n";scenes[0].data = 90;
+        scenes[1].type = "çŸ­ä¿¡"; scenes[1].description = "é€šçŸ¥æœ‹å‹æ‰‹æœºæ¢å·ï¼Œå‘é€çŸ­ä¿¡50æ¡\n";scenes[1].data = 50;
+        scenes[2].type = "çŸ­ä¿¡"; scenes[2].description = "å‚ä¸ç¯å¢ƒä¿æŠ¤å®æ–½æ–¹æ¡ˆé—®å·è°ƒæŸ¥ å‘é€çŸ­ä¿¡5æ¡\n";scenes[2].data = 5;
+        scenes[3].type = "é€šè¯"; scenes[3].description = "ç»™å®¶é•¿æ‰“ç”µè¯ï¼Œé€šè¯50åˆ†é’Ÿ\n";scenes[3].data = 50;
+        scenes[4].type = "ä¸Šç½‘"; scenes[4].description = "çœ‹ä¸€éƒ¨ç”µå½±ï¼Œæµé‡æ¶ˆè€—1GB\n";scenes[4].data = 1024;
+        scenes[5].type = "ä¸Šç½‘"; scenes[5].description = "æ™šä¸Šçœ‹æ¸¸æˆç›´æ’­ï¼Œæµé‡æ¶ˆè€—3GB\n";scenes[5].data = 3 * 1024;
 	}
 	
 	@Override
@@ -71,44 +71,44 @@ public class CardServiceImpl implements CardService {
         // TalkPackage ----- 0
         // NetPackage  ----- 1
         // Superpackage----- 2
-        //±ä¸üÌ×²ÍÒª³õÊ¼»¯Êµ¼ÊÊ¹ÓÃÌ×²ÍÓàÁ¿Îª0£¬²¢ÔÚ»°·ÑÖĞ¿Û³ıĞÂÌ×²Í·ÑÓÃ
+        //å˜æ›´å¥—é¤è¦åˆå§‹åŒ–å®é™…ä½¿ç”¨å¥—é¤ä½™é‡ä¸º0ï¼Œå¹¶åœ¨è¯è´¹ä¸­æ‰£é™¤æ–°å¥—é¤è´¹ç”¨
         switch (packNum) {
             case 0:
                 if (cd.serPackage == 0)
-                    return "ÄúÒÑ¾­ÊÇ¸ÃÌ×²ÍÓÃ»§£¬ÎŞĞè»»Ì×²Í£¡";
+                    return "æ‚¨å·²ç»æ˜¯è¯¥å¥—é¤ç”¨æˆ·ï¼Œæ— éœ€æ¢å¥—é¤ï¼";
                 if(cd.money < TalkPackage.price)
-                    return "Óà¶î²»×ãÒÔÖ§¸¶ĞÂÌ×²Íµ±ÔÂ·ÑÓÃ£¬Çë³äÖµºó±ä¸üÌ×²Í";
+                    return "ä½™é¢ä¸è¶³ä»¥æ”¯ä»˜æ–°å¥—é¤å½“æœˆè´¹ç”¨ï¼Œè¯·å……å€¼åå˜æ›´å¥—é¤";
                 cd.realFlow = 0;
                 cd.realSMSCount = 0;
                 cd.realTalkTime = 0;
                 cd.serPackage = packNum;
                 cd.money = cd.money - cd.getPackage().curPrice;
                 cardDao.updateCard(cd);
-                return "Ì×²Í±ä¸ü³É¹¦!";
+                return "å¥—é¤å˜æ›´æˆåŠŸ!";
             case 1:
                 if (cd.serPackage == 1)
-                    return "ÄúÒÑ¾­ÊÇ¸ÃÌ×²ÍÓÃ»§£¬ÎŞĞè»»Ì×²Í£¡";
+                    return "æ‚¨å·²ç»æ˜¯è¯¥å¥—é¤ç”¨æˆ·ï¼Œæ— éœ€æ¢å¥—é¤ï¼";
                 if(cd.money < NetPackage.price)
-                    return "Óà¶î²»×ãÒÔÖ§¸¶ĞÂÌ×²Íµ±ÔÂ·ÑÓÃ£¬Çë³äÖµºó±ä¸üÌ×²Í";
+                    return "ä½™é¢ä¸è¶³ä»¥æ”¯ä»˜æ–°å¥—é¤å½“æœˆè´¹ç”¨ï¼Œè¯·å……å€¼åå˜æ›´å¥—é¤";
                 cd.realFlow = 0;
                 cd.realSMSCount = 0;
                 cd.realTalkTime = 0;
                 cd.serPackage = packNum;
                 cd.money = cd.money - cd.getPackage().curPrice;
                 cardDao.updateCard(cd);
-                return "Ì×²Í±ä¸ü³É¹¦!";
+                return "å¥—é¤å˜æ›´æˆåŠŸ!";
             case 2:
                 if (cd.serPackage == 2)
-                    return "ÄúÒÑ¾­ÊÇ¸ÃÌ×²ÍÓÃ»§£¬ÎŞĞè»»Ì×²Í£¡";
+                    return "æ‚¨å·²ç»æ˜¯è¯¥å¥—é¤ç”¨æˆ·ï¼Œæ— éœ€æ¢å¥—é¤ï¼";
                 if(cd.money < SuperPackage.price)
-                    return "Óà¶î²»×ãÒÔÖ§¸¶ĞÂÌ×²Íµ±ÔÂ·ÑÓÃ£¬Çë³äÖµºó±ä¸üÌ×²Í";
+                    return "ä½™é¢ä¸è¶³ä»¥æ”¯ä»˜æ–°å¥—é¤å½“æœˆè´¹ç”¨ï¼Œè¯·å……å€¼åå˜æ›´å¥—é¤";
                 cd.realFlow = 0;
                 cd.realSMSCount = 0;
                 cd.realTalkTime = 0;
                 cd.serPackage = packNum;
                 cd.money = cd.money - cd.getPackage().curPrice;
                 cardDao.updateCard(cd);
-                return "Ì×²Í±ä¸ü³É¹¦!";
+                return "å¥—é¤å˜æ›´æˆåŠŸ!";
             default:
                 return null;
         }
@@ -167,7 +167,7 @@ public class CardServiceImpl implements CardService {
     @Override
     public List<ConsumInfo> getConsumeInfo(String number) {
     	List<ConsumInfo> infos = consumeDao.queryByNumber(number);
-    	return consumeDao.queryByNumber(number);
+    	return infos;
     }
 
 	@Override
@@ -180,18 +180,18 @@ public class CardServiceImpl implements CardService {
 			e.printStackTrace();
 		}
         if(card.money == 0) {
-        	// Èç¹ûÍ£»úÖ±½ÓÌáÊ¾ÍË³ö
-        	return "Ã»ÓĞ»°·Ñ£¬ÒÑÍ£»ú£¬Çë³äÖµ";
+        	// å¦‚æœåœæœºç›´æ¥æç¤ºé€€å‡º
+        	return "æ²¡æœ‰è¯è´¹ï¼Œå·²åœæœºï¼Œè¯·å……å€¼";
         }
         
-        // Ëæ»úÊıÓÃÓÚËæ»ú½øÈëÏû·Ñ³¡¾°
+        // éšæœºæ•°ç”¨äºéšæœºè¿›å…¥æ¶ˆè´¹åœºæ™¯
         Random rd = new Random();
         if (card.serPackage == 1) {
             int index = 0;
-            // Ëæ»ú½øÈëÏû·Ñ³¡¾°
+            // éšæœºè¿›å…¥æ¶ˆè´¹åœºæ™¯
             while (true) {
                 index = rd.nextInt(6);
-                if (!scenes[index].type.equals("ÉÏÍø"))
+                if (!scenes[index].type.equals("ä¸Šç½‘"))
                     continue;
                 break;
             }
@@ -204,18 +204,18 @@ public class CardServiceImpl implements CardService {
             int result = ns.netPlay(scenes[index].data, card);
             
             cardDao.updateCard(card);
-            // Ì×²ÍÓàÁ¿³ä×ã
+            // å¥—é¤ä½™é‡å……è¶³
             if (result == 0) {
                 return scenes[index].description;
             }
-            // Ì×²ÍÓàÁ¿²»×ã£¬µ«Ê£Óà»°·Ñ³ä×ã
+            // å¥—é¤ä½™é‡ä¸è¶³ï¼Œä½†å‰©ä½™è¯è´¹å……è¶³
             else if (result >0) {
-                String str = scenes[index].description + "µ«³¬¹ıÌ×²ÍÓàÁ¿£¬»°·Ñ¿Û³ı" + result/10.0 + "Ôª\n";
+                String str = scenes[index].description + "ä½†è¶…è¿‡å¥—é¤ä½™é‡ï¼Œè¯è´¹æ‰£é™¤" + result/10.0 + "å…ƒ\n";
                 return str;
             }
-            // Ì×²ÍÓàÁ¿²»×ã£¬ Ê£Óà»°·ÑÒ²²»×ã
+            // å¥—é¤ä½™é‡ä¸è¶³ï¼Œ å‰©ä½™è¯è´¹ä¹Ÿä¸è¶³
             else if (result < 0) {
-                String str = scenes[index].description + "µ«³¬¹ıÌ×²ÍÓàÁ¿£¬»°·ÑÒÑÓÃÍê,Çë³äÖµ\n";
+                String str = scenes[index].description + "ä½†è¶…è¿‡å¥—é¤ä½™é‡ï¼Œè¯è´¹å·²ç”¨å®Œ,è¯·å……å€¼\n";
                 return str;
             }
         }
@@ -223,7 +223,7 @@ public class CardServiceImpl implements CardService {
             int index = 0;
             while (true) {
                 index = rd.nextInt(6);
-                if (scenes[index].type.equals("ÉÏÍø"))
+                if (scenes[index].type.equals("ä¸Šç½‘"))
                     continue;
                 break;
             }
@@ -233,7 +233,7 @@ public class CardServiceImpl implements CardService {
             ci.consumData = scenes[index].data;
             consumeDao.insert(ci);
             double result;
-            if (scenes[index].type.equals("¶ÌĞÅ")) {
+            if (scenes[index].type.equals("çŸ­ä¿¡")) {
                 TalkPackage ss = (TalkPackage)card.getPackage();
                 result = ss.send(scenes[index].data, card)*0.1;
             }
@@ -246,11 +246,11 @@ public class CardServiceImpl implements CardService {
                 return scenes[index].description;
             }
             else if (result >0) {
-                String str = scenes[index].description + "µ«³¬¹ıÌ×²ÍÓàÁ¿£¬»°·Ñ¿Û³ı" + result + "Ôª\n";
+                String str = scenes[index].description + "ä½†è¶…è¿‡å¥—é¤ä½™é‡ï¼Œè¯è´¹æ‰£é™¤" + result + "å…ƒ\n";
                 return str;
             }
             else if (result < 0) {
-                String str = scenes[index].description + "µ«³¬¹ıÌ×²ÍÓàÁ¿£¬»°·ÑÒÑÓÃÍê,Çë³äÖµ\n";
+                String str = scenes[index].description + "ä½†è¶…è¿‡å¥—é¤ä½™é‡ï¼Œè¯è´¹å·²ç”¨å®Œ,è¯·å……å€¼\n";
                 return str;
             }
         }
@@ -263,11 +263,11 @@ public class CardServiceImpl implements CardService {
             ci.consumData = scenes[index].data;
             consumeDao.insert(ci);
             double result;
-            if (scenes[index].type.equals("¶ÌĞÅ")) {
+            if (scenes[index].type.equals("çŸ­ä¿¡")) {
             	SuperPackage ss = (SuperPackage)card.getPackage();;
                 result = ss.send(scenes[index].data, card)*0.1;
             }
-            else if (scenes[index].type.equals("Í¨»°")) {
+            else if (scenes[index].type.equals("é€šè¯")) {
             	SuperPackage cs = (SuperPackage)card.getPackage();;
                 result = cs.call(scenes[index].data, card)*0.2;
             }
@@ -281,11 +281,11 @@ public class CardServiceImpl implements CardService {
                 return scenes[index].description;
             }
             else if (result >0) {
-                String str = scenes[index].description + "µ«³¬¹ıÌ×²ÍÓàÁ¿£¬»°·Ñ¿Û³ı" + result + "Ôª\n";
+                String str = scenes[index].description + "ä½†è¶…è¿‡å¥—é¤ä½™é‡ï¼Œè¯è´¹æ‰£é™¤" + result + "å…ƒ\n";
                 return str;
             }
             else if (result < 0) {
-                String str = scenes[index].description + "µ«³¬¹ıÌ×²ÍÓàÁ¿£¬»°·ÑÒÑÓÃÍê,Çë³äÖµ\n";
+                String str = scenes[index].description + "ä½†è¶…è¿‡å¥—é¤ä½™é‡ï¼Œè¯è´¹å·²ç”¨å®Œ,è¯·å……å€¼\n";
                 return str;
             }
         }
